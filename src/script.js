@@ -8,7 +8,7 @@ const removeLastBtn = document.getElementById('removeLast');
 const reverseBtn = document.getElementById('reverseGallery');
 const shuffleBtn = document.getElementById('shuffleGallery');
 
-let picsumList = []; // all fetched images
+let picsumList = [];
 
 async function fetchPicsumList(){
 	try{
@@ -30,7 +30,6 @@ function pickUniqueImages(count){
 	const available = picsumList.filter(i => !displayed.has(String(i.id)));
 	if(available.length === 0) return [];
 	const chosen = [];
-	// simple random pick without replacement from available
 	while(chosen.length < count && available.length > 0){
 		const idx = Math.floor(Math.random()*available.length);
 		chosen.push(available.splice(idx,1)[0]);
@@ -95,7 +94,6 @@ function shuffleGallery(){
 	nodes.forEach(n=>gallery.appendChild(n));
 }
 
-/* Modal */
 function openModal(item){
 	const modal = document.createElement('div');
 	modal.className = 'modal';
@@ -110,7 +108,6 @@ function openModal(item){
 	document.body.appendChild(modal);
 }
 
-/* Wire up buttons */
 loadMoreBtn.addEventListener('click', loadMore);
 clearBtn.addEventListener('click', clearGallery);
 removeLastBtn.addEventListener('click', removeLast);
